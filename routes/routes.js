@@ -4,13 +4,12 @@ const userdata = require('../dataModals/userinfo.model');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const { addUser, singleUser, getUser, addWebUser, loginUser, updateData, delData } = require('../Controllers/users-controller');
-
+const contr= require('../Controllers/videos-controller')
 const ObjectID = require('mongoose').Types.ObjectId;
 
 //Get Api
 
 router.get('/', getUser); 
-
 
 //Get Id of Single Person
 
@@ -35,5 +34,8 @@ router.put('/:id', updateData);
 // Delete Data
 
 router.delete('/:id', delData);
+
+// Video Routes.
+
 
 module.exports = router;
