@@ -31,6 +31,7 @@ app.use(cors({allowCrossDomain}))
 app.use(bodyParser.json());
 
 
+console.log("routes");
 app.use('/data',userRoutes);
 
 app.use('/',imageRoutes);
