@@ -35,11 +35,45 @@ storage = new GridFsStorage({
       };
       resolve(fileInfo);
     });
+<<<<<<< HEAD
   }
 });
 const upload = multer({ storage: storage })
 
 
+=======
+  
+  //   Storage
+    storage = new GridFsStorage({
+     url: 'mongodb://localhost:27017/websitework',
+     file: (req, file) => {
+       return new Promise((resolve, reject) => {
+         const filename = file.originalname;
+         const fileInfo = {
+           filename: filename,
+           bucketName: "newBucket"
+         };
+         resolve(fileInfo);
+       });
+     }
+   });
+
+ 
+    // const multerStorage = multer.diskStorage({
+    //     destination: (req, file, cb) => {
+    //       cb(null, "public");
+    //     },
+    //     filename: (req, file, cb) => {
+    //       const ext = file.mimetype.split("/")[1];
+    //       cb(null, `files/admin-${file.fieldname}-${Date.now()}.${ext}`);
+    //     },
+    //   });
+      const upload = multer({
+        storage: storage
+        // fileFilter: multerFilter,
+      });
+    
+>>>>>>> master
 // Getting all Movie's
 
 router.get('/', getMovies)

@@ -42,35 +42,56 @@ const singleMovies = (req, res) => {
 
  // Post Request 
 
- const addMovies = async (req, res) => {
+ const addMovies =  async(req, res) => {
+    console.log(req.file);
 
-    try {
+    // // try {
 
         let user = new movModal({
-            moviesURl: req.body.moviesURl,
-            moviesTitle: req.body.moviesTitle,
-            moviesDetail: req.body.moviesDetail,
-            moviesCategories: req.body.moviesCategories,
-            moviesPoster: req.body.moviesPoster,
+            moviesURl: req.file.filename,
+            // moviesTitle: req.body.moviesTitle,
+            // moviesDetail: req.body.moviesDetail,
+            // moviesCategories: req.body.moviesCategories,
+            // moviesPoster: req.body.moviesPoster,
         });
 
         await user.save();
+    // try {
+    //     const newFile =  File.create({
+    //       name: req.file.filename,
+    //     });
+    //     res.status(200).json({
+    //       status: "success",
+    //       message: "File created successfully!!",
+    //     });
+    //   } catch (error) {
+    //     res.json({
+    //       error,
+    //     });
+    //   }
     
-        return res.status(200).json
-            ({
-                Message: "Success",
-                user: user
-            })
+       
+     
+
+            
+        
+       
+
+    //     return res.status(200).json
+    //         ({
+    //             Message: "Success",
+    //             user: user
+    //         })
 
 
-    }
-    catch (error) {
-        console.log(error)
-        return res.status(400).json({
-            message: "Error",
-            error: error
-        })
-    }
+    // }
+    // catch (error) {
+    //     console.log(error)
+    //     return res.status(400).json({
+    //         message: "Error",
+    //         error: error
+    //     })
+    // }
 
 }
 
