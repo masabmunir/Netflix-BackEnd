@@ -3,13 +3,6 @@ const router = express.Router();
 const movModal = require('../dataModals/movies.modal')
 const ObjectID = require('mongoose').Types.ObjectId;
 
-// const database = require("../db/conn");
-// var mongoose = require('mongoose');
-// var Grid = require('gridfs-stream');
-// var fs = require('fs');
-// var conn = require('../db/conn');
-
-// var  gfs = Grid( mongoose.connection, mongoose.mongo );
 
 var mongoose=require("mongoose");
 var gridfsstream=require("gridfs-stream");
@@ -63,13 +56,6 @@ const singleMovies = (req, res) => {
 
         await user.save();
     
-       
-     
-
-            
-        
-       
-
         return res.status(200).json
             ({
                 Message: "Success",
