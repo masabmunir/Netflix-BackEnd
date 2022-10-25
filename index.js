@@ -11,15 +11,35 @@ const imageRoutes = require('./routes/images.routes');
 // Movies Path
 const movieModal = require('./dataModals/movies.modal');
 const movieRoutes = require('./routes/movies.routes');
+const storage = require('./storage');
+
+
+
+  
+  //to parse json content
+  app.use(express.json());
+  //to parse body from url
+  app.use(express.urlencoded({
+    extended: false
+  }));
+  
 
 // For uploading large images/videos
 
-app.use(express.json({limit: "50mb", extended: true}))
-app.use(express.urlencoded({limit: "50mb", extended: true, parameterLimit: 500000}))
+app.use(bodyParser.json({
+   limit: '50mb'
+ }));
+ 
+ app.use(bodyParser.urlencoded({
+   limit: '50mb',
+   parameterLimit: 100000,
+   extended: true 
+ }));
 
 
 const videoModel = require('./routes/videoroute');
 const songModal = require('./routes/sound.routes');
+const { db } = require('./dataModals/images.modal');
 
 
 const port = process.env.port || 8000
