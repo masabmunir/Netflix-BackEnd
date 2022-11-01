@@ -28,31 +28,38 @@ exports.findbyTitle = (req, res)=>{
 }
 
 exports.postVideos=(req, res)=>{
-    try {
-        console.log(req.body);
+    // try {
+        console.log(req.file);
+        let user = new videoModel({
+            title: req.file.filename,
+           
+        });
 
-        let video =  new videoModel({
-            title: req.body.title,
-            genre:req.body.genre,
-            IsloggedIn:req.body.IsloggedIn
+         user.save();
+    
+
+        // let video =  new videoModel({
+        //     title: req.body.title,
+        //     genre:req.body.genre,
+        //     IsloggedIn:req.body.IsloggedIn
 
 
-        }).save();
+        // }).save();
         
-        console.log('dATA INSERTED');
-        return res.status(200).json
-            ({
-                Message: "Success",
+    //     console.log('dATA INSERTED');
+    //     return res.status(200).json
+    //         ({
+    //             Message: "Success",
                 
-            })
-    }
-    catch (error) {
-        console.log(error)
-        return res.status(400).json({
-            message: "Error",
-            error: error
-        })
-    }
+    //         })
+    // }
+    // catch (error) {
+    //     console.log(error)
+    //     return res.status(400).json({
+    //         message: "Error",
+    //         error: error
+    //     })
+    // }
 }
 
 exports.UpdateVideos=(req, res)=>{

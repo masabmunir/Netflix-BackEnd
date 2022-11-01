@@ -4,41 +4,44 @@
 // const router = express.Router();
 // const movModal = require('./dataModals/movies.modal')
 // const ObjectID = require('mongoose').Types.ObjectId;
-// const { delUser, getMovies, singleMovies, addMovies, updateMovies, delMovies } = require('../Controllers/movie-controller');
+// const { delUser, getMovies, singleMovies, addMovies, updateMovies, delMovies } = require('..');
 
-// const {
-//   GridFsStorage
-// } = require("multer-gridfs-storage");
 
-// require("dotenv")
-//   .config();
-
-// //   Bucket
-//   let bucket;
-//   mongoose.connection.on("connected", () => {
-//     var db = mongoose.connections[0].db;
-//     bucket = new mongoose.mongo.GridFSBucket(db, {
-//       bucketName: "newBucket"
+//   const {
+//     GridFsStorage
+//   } = require("multer-gridfs-storage");
+  
+//   require("dotenv")
+//     .config();
+  
+//   //   Bucket
+//     let bucket;
+//     mongoose.connection.on("connected", () => {
+//       var db = mongoose.connections[0].db;
+//       bucket = new mongoose.mongo.GridFSBucket(db, {
+//         bucketName: "newBucket"
+//       });
+//       console.log(bucket);
 //     });
-//     console.log(bucket);
-//   });
+  
+//   //   Storage
+//     storage = new GridFsStorage({
+//      url: 'mongodb://localhost:27017/websitework',
+//      file: (req, file) => {
+//        return new Promise((resolve, reject) => {
+//          const filename = file.originalname;
+//          const fileInfo = {
+//            filename: filename,
+//            bucketName: "newBucket"
+//          };
+//          resolve(fileInfo);
+//        });
+//      }
+//    });
+   
+//   upload = multer({storage});
 
-// //   Storage
-//   storage = new GridFsStorage({
-//    url: 'mongodb://localhost:27017/websitework',
-//    file: (req, file) => {
-//      return new Promise((resolve, reject) => {
-//        const filename = file.originalname;
-//        const fileInfo = {
-//          filename: filename,
-//          bucketName: "newBucket"
-//        };
-//        resolve(fileInfo);
-//      });
-//    }
-//  });
- 
-// upload = multer({storage});
+
 
 // router.get('/', getMovies)
 
