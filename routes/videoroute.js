@@ -8,9 +8,11 @@ router.get("/getVideos", contr.getVideos);
 
 router.get("/getByTitle/:title", contr.findbyTitle);
 
+router.get("/getVideo/:id", contr.findVideoById);
+
 router.post("/postVideos", contr.postVideos);
 
-router.patch("/updateVideos/:id", contr.UpdateVideos);
+router.put("/updateVideos/:id", contr.UpdateVideos);
 
 router.delete("/deleteVideos/:id", contr.DeleteVidoes);
 

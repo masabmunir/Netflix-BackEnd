@@ -27,14 +27,25 @@ exports.findbyTitle = (req, res)=>{
     })
 }
 
+exports.findVideoById = (req, res)=>{
+    const {id} = req.params;
+    videoModel.findById(id, (err, found)=>{
+        if (err) {
+            console.log('Not Found')
+        } else {
+            res.send(found);
+        }
+    })
+}
+
 exports.postVideos=(req, res)=>{
     try {
         console.log(req.body);
 
         let video =  new videoModel({
-            title: req.body.title,
-            genre:req.body.genre,
-            IsloggedIn:req.body.IsloggedIn
+            videoTitle: req.body.videoTitle,
+            videogenre:req.body.videogenre,
+            videoURL:req.body.videoURL
 
 
         }).save();

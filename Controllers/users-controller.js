@@ -121,11 +121,11 @@ const loginUser = async (req, res) => {
                 });
                 res.send({ message: "login successfully", userdata: userdata })
             } else {
-                res.send({ message: "wrong credentials" })
+                res.send({ message:"Invalid credentials"})
             }
         }
         else {
-            res.send("not register")
+            res.send({ message: "Not Registered"})
         }
     })
 }

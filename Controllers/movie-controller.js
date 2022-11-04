@@ -50,16 +50,13 @@ const singleMovies = (req, res) => {
  // Post Request 
 
  const addMovies =  async(req, res) => {
-    console.log(req.file);
-
     // // try {
 
         let user = new movModal({
-            moviesURl: req.file.filename,
-            // moviesTitle: req.body.moviesTitle,
-            // moviesDetail: req.body.moviesDetail,
-            // moviesCategories: req.body.moviesCategories,
-            // moviesPoster: req.body.moviesPoster,
+            moviesURl: req.body.moviesURl,
+            moviesTitle: req.body.moviesTitle,
+            moviesDetail: req.body.moviesDetail,
+            moviesCategories: req.body.moviesCategories,
         });
 
         await user.save();

@@ -13,8 +13,16 @@ const movieModal = require('./dataModals/movies.modal');
 const movieRoutes = require('./routes/movies.routes');
 const storage = require('./storage');
 
+// User Detail Routes 
+
+const userdetailModel = require('./dataModals/userdetail');
+const userdetailRoutes = require('./routes/userdetails')
 
 
+// For uploading large images/videos
+
+app.use(express.json({limit: "10mb", extended: true}))
+app.use(express.urlencoded({limit: "50mb", extended: true, parameterLimit: 50000}))
   
   //to parse json content
   app.use(express.json());
@@ -23,19 +31,6 @@ const storage = require('./storage');
     extended: false
   }));
   
-
-// For uploading large images/videos
-
-app.use(bodyParser.json({
-   limit: '50mb'
- }));
- 
- app.use(bodyParser.urlencoded({
-   limit: '50mb',
-   parameterLimit: 100000,
-   extended: true 
- }));
-
 
 const videoModel = require('./routes/videoroute');
 const songModal = require('./routes/sound.routes');
@@ -62,10 +57,11 @@ app.use('/',imageRoutes);
 
 app.use('/movies',movieRoutes);
 
-app.use('/', videoModel )
+app.use('/', videoModel );
 
 app.use('/', songModal);
 
+app.use('/userdetail',userdetailRoutes)
 
 app.listen(port,()=>{
 

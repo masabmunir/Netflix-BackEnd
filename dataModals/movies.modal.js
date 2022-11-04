@@ -9,12 +9,7 @@ const galleryMovie = mongoose.Schema({
     moviesDetail:String,
     moviesCategories:String,
     moviesPoster:String,
-    // file:{
-    //     data: Buffer,
-    //     contentType: String
-    //     }
-    
-
+   
 })
 
 module.exports = mongoose.model('movies',galleryMovie);
