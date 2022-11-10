@@ -1,6 +1,6 @@
 var express = require('express');
 const router = express.Router();
-const userdetails = require('../dataModals/userdetail');
+const userDetails = require('../dataModals/userdetail');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const ObjectID = require('mongoose').Types.ObjectId;
@@ -8,7 +8,7 @@ const ObjectID = require('mongoose').Types.ObjectId;
 //Get User
 
 const Users = (req, res) => {
-    userdetails.find((err, doc) => {
+    userDetails.find((err, doc) => {
         if (err) {
             console.log('Error in get Data' + err)
         } else {
@@ -23,7 +23,7 @@ const Users = (req, res) => {
 const addUser =  async (req, res) => {
     try {
 
-        let user = await new userdetails({
+        let user = await new userDetails({
             name: req.body.name,
             email: req.body.email,
             password: req.body.password,
@@ -53,23 +53,23 @@ const addUser =  async (req, res) => {
 
 const loginUsers = async (req, res) => {
     const { email, password } = req.body;
-    userdetails.findOne({ email: email }, async(err, userdetails) => {
-        if (userdetails) {
-            if (password === userdetails.password) {
-                const token = await userdetails.generateAuthToken();
+    userDetails.findOne({ email: email }, async(err, userDetails) => {
+        if (userDetails) {
+            if (password === userDetails.password) {
+                const token = await userDetails.generateAuthToken();
                 console.log("token is " + token);
 
                 res.cookie("jwt", token, {
                     expires: new Date(Date.now() + 30000),
                     httpOnly: true
                 });
-                res.send({ message: "login successfully", userdetails: userdetails })
+                res.send({ message: "login successfully", userDetails: userDetails })
             } else {
-                res.send({ message: "wrong credentials" })
+                res.send({ message:"Invalid credentials"})
             }
         }
         else {
-            return res.json({message:"not register"})
+            res.send({ message: "Not Registered"})
         }
     })
 }
@@ -79,7 +79,7 @@ const loginUsers = async (req, res) => {
 const delData = (req, res) => {
 
     if (ObjectID.isValid(req.params.id)) {
-        userdetails.findByIdAndRemove(req.params.id, (err, doc) => {
+        userDetails.findByIdAndRemove(req.params.id, (err, doc) => {
             if (err) {
                 console.log('Data is Deleted' + err)
             } else {

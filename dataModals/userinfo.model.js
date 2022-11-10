@@ -47,20 +47,6 @@ userdata.methods.generateAuthToken = async function(){
     }
 }
 
-// userdata.pre("save",async function(next){
-//     if(this.isModified("password")){
-
-//         this.password = await bcrypt.hash(this.password,10);
-//         this.confirmpassword = await bcrypt.hash(this.password,10);
-//     }
-//     next();
-
-//     bcrypt.compare(myPlaintextPassword, hash, function(err, result) {
-    
-//     });
-// })
-
-
 
 module.exports = mongoose.model('data',userdata);
 

@@ -12,7 +12,7 @@ router.get('/', Users);
 
 router.post('/signUp', addUser);
 
-router.post('/loginUser', loginUsers);
+router.post('/signIn', loginUsers);
 
 router.delete('/:id', delData)
 

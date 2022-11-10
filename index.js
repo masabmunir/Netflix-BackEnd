@@ -11,12 +11,12 @@ const imageRoutes = require('./routes/images.routes');
 // Movies Path
 const movieModal = require('./dataModals/movies.modal');
 const movieRoutes = require('./routes/movies.routes');
-const storage = require('./storage');
-
 // User Detail Routes 
-
 const userdetailModel = require('./dataModals/userdetail');
 const userdetailRoutes = require('./routes/userdetails')
+const storage = require('./storage');
+
+
 
 
 // For uploading large images/videos
