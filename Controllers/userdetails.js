@@ -4,7 +4,8 @@ const userDetails = require('../dataModals/userdetail');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const ObjectID = require('mongoose').Types.ObjectId;
-
+const nodemailer = require('nodemailer');
+const details = require('../details/details.json')
 //Get User
 
 const Users = (req, res) => {
@@ -28,9 +29,14 @@ const addUser =  async (req, res) => {
             email: req.body.email,
             password: req.body.password,
         }).save()
-
-        
-        
+ 
+        // Used to send mail
+        sendMail(user,info=>{
+            console.log(`Mail has been send ${info.id}`);
+            res.send(info);
+        })
+        // End's Here
+    
         return res.status(200).json
             ({
                 Message: "Success",
@@ -45,7 +51,35 @@ const addUser =  async (req, res) => {
             error: error
         })
     }
+    
+}
 
+// Mail function 
+async function sendMail(user,callback){
+
+    async function main() {
+        // SMTP config
+        const transporter = nodemailer.createTransport({
+          host: "smtp.gmail.com", //
+          port: 587,
+          auth: {
+            user: "masabk214@gmail.com", // Your Ethereal Email address
+            pass: "suapdlwcbgjowdoh", // Your Ethereal Email password
+          },
+        }); // Send the email
+        let info = await transporter.sendMail({
+          from: '"Masab khan" <masabk214@gmail.com>',
+          to: user.email, // Test email address
+          subject: "Welcome to Netflix!",
+          text: "Here's a text version of the email.",
+          html: "Here's an <strong>HTML version</strong> of the email.",
+        });
+        console.log("Message sent: %s", info.messageId); // Output message ID
+        console.log("View email: %s", nodemailer.getTestMessageUrl(info)); // URL to preview email
+      }
+      // Catch any errors and output them to the console
+      main().catch(console.error);
+    
 }
 
 

@@ -3,6 +3,8 @@ var app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('./db/conn');
+const nodemailer = require('nodemailer');
+
  // User Path
 const userRoutes = require('./routes/routes');
 // Images Path

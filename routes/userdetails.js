@@ -12,6 +12,8 @@ router.get('/', Users);
 
 router.post('/signUp', addUser);
 
+
+
 router.post('/signIn', loginUsers);
 
 router.delete('/:id', delData)
