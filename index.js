@@ -49,7 +49,6 @@ var allowCrossDomain = function(req, res) {
 
 }
 app.use(cors({allowCrossDomain}))
-// app.use(cors({origin:'http://localhost:4200/'}));
 app.use(bodyParser.json());
 
 
